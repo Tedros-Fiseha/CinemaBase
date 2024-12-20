@@ -20,6 +20,6 @@ This is a simple cinema management system built with PHP, following the Model-Vi
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/cinema-management-api.git
-cd cinema-management-api
+git clone https://github.com/Tedros-Fiseha/CinemaBase.git
+cd cinemaBase
 php -S localhost:8000 -t public
