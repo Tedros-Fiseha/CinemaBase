@@ -21,5 +21,5 @@ This is a simple cinema management system built with PHP, following the Model-Vi
 
 ```bash
 git clone https://github.com/Tedros-Fiseha/CinemaBase.git
-cd cinemaBase
+cd CinemaBase
 php -S localhost:8000 -t public
