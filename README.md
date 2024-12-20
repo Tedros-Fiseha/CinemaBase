@@ -14,7 +14,6 @@ This is a simple cinema management system built with PHP, following the Model-Vi
 ## Requirements
 
 - PHP (version 7.x or higher)
-- Composer (for managing dependencies)
 
 ## Setup Instructions
 
@@ -23,3 +22,4 @@ This is a simple cinema management system built with PHP, following the Model-Vi
 ```bash
 git clone https://github.com/your-username/cinema-management-api.git
 cd cinema-management-api
+php -S localhost:8000 -t public
