@@ -35,16 +35,17 @@ class Cinema
             $cinemaId = $this->conn->insert_id; // Capture cinema ID after insertion
 
             // Insert into `cinema_details`
-            $queryDetails = "INSERT INTO cinema_details (cinema_id, op_hours, screen_rooms, seating_capacity, languages, tin_number, business_license, payment_methods) 
-                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $queryDetails = "INSERT INTO cinema_details (cinema_id, op_hours, screen_rooms, seating_capacity, languages, facilities, tin_number, business_license, payment_methods) 
+                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmtDetails = $this->conn->prepare($queryDetails);
             $stmtDetails->bind_param(
-                "iiiissss",
+                "iiiisssss",
                 $cinemaId,
                 $data['op_hours'],
                 $data['screen_rooms'],
                 $data['seating_capacity'],
                 $data['languages'],
+                $data['facilities'],
                 $data['tin_number'],
                 $data['business_license'],
                 $data['payment_methods']
