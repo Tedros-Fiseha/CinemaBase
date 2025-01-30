@@ -52,7 +52,10 @@ class Cinema
             );
             $stmtDetails->execute();
 
+
             // Insert into `admins`
+            $hashedPassword = $data['admin_password']; // It was already hashed before calling saveCinema()
+
             $queryAdmin = "INSERT INTO admins (cinema_id, admin_name, admin_contact, admin_email, admin_password, admin_id_card, admin_employment_document) 
                            VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmtAdmin = $this->conn->prepare($queryAdmin);
@@ -62,7 +65,7 @@ class Cinema
                 $data['admin_name'],
                 $data['admin_contact'],
                 $data['admin_email'],
-                $data['admin_password'],
+                $hashedPassword,
                 $data['admin_id_card'],
                 $data['admin_employment_document']
             );
@@ -84,37 +87,5 @@ class Cinema
             $this->conn->rollback(); // Rollback transaction on error
             return false;
         }
-    }
-
-    public function getCinemaDetails($cinemaId)
-    {
-        $query = "SELECT c.cinema_name, c.location, c.cinema_phone, c.website, c.cinema_logo, 
-                     d.op_hours, d.seating_capacity, d.screen_rooms, d.payment_methods, d.languages
-              FROM cinemas c
-              JOIN cinema_details d ON c.id = d.cinema_id
-              WHERE c.id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $cinemaId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc();
-    }
-
-    public function getOperatingHours($cinemaId)
-    {
-        $query = "SELECT day, start_time, end_time 
-              FROM operating_hours 
-              WHERE cinema_id = ? 
-              ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $cinemaId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $operatingHours = [];
-        while ($row = $result->fetch_assoc()) {
-            $operatingHours[] = $row; // Add each row to the array
-        }
-        return $operatingHours;
     }
 }

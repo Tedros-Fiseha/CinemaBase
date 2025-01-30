@@ -392,12 +392,12 @@
                         </div>
 
                         <!-- Admin Password -->
-                        <div class="flex-1">
+                        <!-- <div class="flex-1">
                             <label for="admin_password" class="block text-sm font-medium text-gray-700">Admin Password</label>
                             <input type="password" id="admin_password" name="admin_password"
                                 placeholder="Enter Admin's password location"
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- File Uploads for Admin ID and Employment Document -->

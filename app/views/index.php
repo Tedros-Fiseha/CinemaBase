@@ -41,24 +41,23 @@
     <!-- Stat Section -->
     <div class="bg-white pb-24">
         <div class="mx-auto px-12 max-w-7xl px-6 lg:px-8">
-            <h2 class="text-center text-3xl font-semibold text-gray-900 py-10">Audience Engagment</h2>
+            <h2 class="text-center text-3xl font-semibold text-gray-900 py-10">Audience Engagement</h2>
             <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
                 <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-                    <dt class="text-base/7 text-gray-600">Transactions every 24 hours</dt>
-                    <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">44 million
-                    </dd>
+                    <dt class="text-base/7 text-gray-600">Tickets sold daily</dt>
+                    <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">150,000</dd>
                 </div>
                 <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-                    <dt class="text-base/7 text-gray-600">Assets under holding</dt>
-                    <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$119
-                        trillion</dd>
+                    <dt class="text-base/7 text-gray-600">Annual box office revenue</dt>
+                    <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$2.3 billion</dd>
                 </div>
                 <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-                    <dt class="text-base/7 text-gray-600">New users annually</dt>
-                    <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">46,000</dd>
+                    <dt class="text-base/7 text-gray-600">New memberships annually</dt>
+                    <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">75,000</dd>
                 </div>
             </dl>
         </div>
+
         <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
             aria-hidden="true">
             <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"

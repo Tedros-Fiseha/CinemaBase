@@ -16,4 +16,3 @@ $router->add('/cinema-details', 'CinemaController@getCinemaDetailsAPI');
 // Dispatch the request
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $router->dispatch($url);
-?>
