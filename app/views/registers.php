@@ -6,30 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/cinema.png" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Register</title>
-    <style>
-        .form-section {
-            display: none;
-        }
 
-        .form-section.active {
-            display: block;
-        }
-    </style>
+    <title>Register</title>
 </head>
 
 <body>
     <!-- Header -->
-    <?php require_once __DIR__ . '/includes/header.php'; ?>
+    <?php
+    require_once __DIR__ . '/includes/header.php';
+
+    ?>
 
     <div class="bg-gray-100 pt-32 flex items-center justify-center py-10 font-[poppins]">
         <div class="bg-white rounded-lg shadow-lg w-full max-w-4xl p-8">
             <h1 class="text-2xl font-bold text-center text-indigo-600 mb-6">Cinema Registration Form</h1>
-            <form action="/cinema/store" method="POST" enctype="multipart/form-data" class="space-y-6" id="multi-part-form">
+            <form action="/cinema/store" method="POST" enctype="multipart/form-data" class="space-y-6">
 
                 <!-- Basic Information -->
-                <div class="form-section active " id="section-1">
+                <div class="space-y-6">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Basic Information</h2>
+
+                    <!-- Horizontal Layout for Inputs -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <!-- Cinema Name -->
                         <div>
@@ -82,8 +79,9 @@
                     </div>
                 </div>
 
-                <!-- Operational Details -->
-                <div class="form-section" id="section-2">
+                <!-- Operational -->
+
+                <div class="space-x-6">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Operational Details</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
@@ -293,7 +291,7 @@
                 </div>
 
                 <!-- Financial Information -->
-                <div class="form-section" id="section-3">
+                <div class="space-x-6">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Financial Information</h2>
                     <!-- TIN Number -->
                     <div class="mx-3 w-max">
@@ -361,9 +359,13 @@
                     </div>
                 </div>
 
+
                 <!-- Admin Information -->
-                <div class="form-section" id="section-4">
+
+                <div class="space-y-6">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Admin Information</h2>
+
+                    <!-- Admin Name -->
                     <div class="flex flex-wrap space-x-6">
                         <div class="flex-1">
                             <label for="admin_name" class="block text-sm font-medium text-gray-700">Admin
@@ -389,6 +391,13 @@
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
+                        <!-- Admin Password -->
+                        <!-- <div class="flex-1">
+                            <label for="admin_password" class="block text-sm font-medium text-gray-700">Admin Password</label>
+                            <input type="password" id="admin_password" name="admin_password"
+                                placeholder="Enter Admin's password location"
+                                class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div> -->
                     </div>
 
                     <!-- File Uploads for Admin ID and Employment Document -->
@@ -410,55 +419,27 @@
                         </div>
 
                     </div>
+
                 </div>
 
-                <!-- Navigation Buttons -->
-                <div class="flex justify-start space-x-4 mt-6">
-                    <button type="button" id="prev-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300" disabled>Previous</button>
-                    <button type="button" id="next-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300">Next</button>
-                    <button type="submit" id="submit-btn" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300" style="display: none;">Submit</button>
+
+                <!-- Submit Button -->
+                <div class="flex justify-center">
+                    <button type="submit"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300">
+                        Register Cinema
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 
     <!-- Footer -->
-    <?php require_once __DIR__ . '/includes/footer.php'; ?>
+    <?php
+    require_once __DIR__ . '/includes/footer.php';
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const formSections = document.querySelectorAll('.form-section');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const submitBtn = document.getElementById('submit-btn');
-            let currentSection = 0;
+    ?>
 
-            function showSection(index) {
-                formSections.forEach((section, i) => {
-                    section.classList.toggle('active', i === index);
-                });
-                prevBtn.disabled = index === 0;
-                nextBtn.style.display = index === formSections.length - 1 ? 'none' : 'inline-block';
-                submitBtn.style.display = index === formSections.length - 1 ? 'inline-block' : 'none';
-            }
-
-            prevBtn.addEventListener('click', function() {
-                if (currentSection > 0) {
-                    currentSection--;
-                    showSection(currentSection);
-                }
-            });
-
-            nextBtn.addEventListener('click', function() {
-                if (currentSection < formSections.length - 1) {
-                    currentSection++;
-                    showSection(currentSection);
-                }
-            });
-
-            showSection(currentSection);
-        });
-    </script>
 </body>
 
 </html>
