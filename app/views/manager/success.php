@@ -14,9 +14,8 @@
             modal.classList.remove('hidden');
         }
 
-        // Redirect to home page after clicking the button
         function redirectToHome() {
-            window.location.href = '/'; // Home page URL
+            window.location.href = '/cinema/register'; // Home page URL
         }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>

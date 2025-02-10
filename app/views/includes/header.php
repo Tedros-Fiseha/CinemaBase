@@ -1,11 +1,10 @@
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <header class="fixed inset-x-0 top-0 z-50 bg-opacity-70 backdrop-blur-md shadow-md font-[poppins]">
 
         <nav class="flex items-center justify-between p-6 lg:px-8 h-20" aria-label="Global">
             <!-- Flex container for the logo and links -->
             <div class="flex lg:flex-1">
-                <a href="#">
+                <a href="/">
                     <!-- Increased image size without affecting navbar height -->
                     <img class="h-24 w-24 object-contain" src="../assets/cinema.png" alt="Cinema Plus">
                 </a>
@@ -36,11 +35,18 @@
             </div>
 
             <!-- Register button -->
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <a href="/cinema/register"><button
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-10">
+                <a href="/login"><button
                         class="text-lg font-semibold text-gray-900 bg-transparent border-2 border-gray-900 rounded-md px-4 py-2 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out">
-                        Register<span aria-hidden="true">&rarr;</span>
-                    </button></a>
+                        Login
+                    </button>
+                </a>
+                <a href="/signup"><button
+                        class="text-lg font-semibold text-gray-900 bg-transparent border-2 border-gray-900 rounded-md px-4 py-2 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out">
+                        Register
+                    </button>
+                </a>
+
             </div>
         </nav>
     </header>

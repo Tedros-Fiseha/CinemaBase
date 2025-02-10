@@ -71,7 +71,6 @@ class Cinema
             );
             $stmtAdmin->execute();
 
-            // Insert into `operating_hours`
             $queryHours = "INSERT INTO operating_hours (cinema_id, day, start_time, end_time) VALUES (?, ?, ?, ?)";
             $stmtHours = $this->conn->prepare($queryHours);
 
@@ -84,8 +83,9 @@ class Cinema
             $this->conn->commit();
             return true;
         } catch (Exception $e) {
-            $this->conn->rollback(); // Rollback transaction on error
+            $this->conn->rollback();
             return false;
         }
     }
+
 }

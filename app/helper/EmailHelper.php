@@ -48,4 +48,35 @@ class EmailHelper
             return false;
         }
     }
+
+    public static function sendVerificationCode($email, $subject, $message)
+    {
+        $mail = new PHPMailer(true);
+
+        try {
+            // Server settings
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server
+            $mail->SMTPAuth = true;
+            $mail->Username = 'teddytez000@gmail.com'; // Your email
+            $mail->Password = 'rnbuhorluwigxnkr'; // Your email password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            // Recipients
+            $mail->setFrom('no-reply@cinemaplus.com', 'Cinema Plus');
+            $mail->addAddress($email);
+
+            // Email content
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+
+            // Send email
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }

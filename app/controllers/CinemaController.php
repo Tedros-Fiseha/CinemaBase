@@ -10,13 +10,19 @@ class CinemaController
     // Show the registration form
     public function register()
     {
-        require_once __DIR__ . '/../views/register.php';
+        require_once __DIR__ . '/../views/manager/pages/register.php';
+    }
+    public function login()
+    {
+        require_once __DIR__ . '/../views/login.php';
     }
 
     // Handle form submission and store data
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $_SESSION['errors'] = [];
             // Ensure the upload directory exists
             $uploadDir = __DIR__ . '/../../uploads/';
             if (!is_dir($uploadDir)) {
@@ -79,15 +85,25 @@ class CinemaController
             $admin_id_card = uploadFile($_FILES['admin_id_card'] ?? null, 'admin_id_card', $uploadDir);
             $admin_employment_document = uploadFile($_FILES['admin_employment_document'] ?? null, 'admin_employment_document', $uploadDir);
 
-            // Validate inputs
             if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                echo "Invalid email address.";
-                return;
+                $_SESSION['errors']['email'] = "Invalid email address.";
             }
 
+            // Validate required fields
             if (empty($_POST['cinema_name']) || empty($_POST['location']) || empty($_POST['cinema_phone'])) {
-                echo "Cinema name, location, and phone are required.";
-                return;
+                $_SESSION['errors']['cinema'] = "Cinema name, location, and phone are required.";
+            }
+
+            // Validate TIN
+            $tin = htmlspecialchars($_POST['tin_number'] ?? '');
+            if (!preg_match('/^\d{12}$/', $tin)) {
+                $_SESSION['errors']['tin'] = "Invalid TIN number.";
+            }
+
+            // If there are errors, return them as JSON
+            if (!empty($_SESSION['errors'])) {
+                echo json_encode(["status" => "error", "errors" => $_SESSION['errors']]);
+                exit();
             }
 
             $operatingHours = [];
@@ -103,11 +119,6 @@ class CinemaController
 
             $tin = htmlspecialchars($_POST['tin_number'] ?? '');
 
-            // Validate TIN (12-digit numeric)
-            if (!preg_match('/^\d{12}$/', $tin)) {
-                echo "Invalid TIN number.";
-                return;
-            }
 
             // Generate a random password for the admin
             $plainPassword = bin2hex(random_bytes(8)); // Example: 'aB3#dE9!'
@@ -127,7 +138,7 @@ class CinemaController
                 'op_hours' => htmlspecialchars($_POST['op_hours'] ?? ''),
                 'screen_rooms' => htmlspecialchars($_POST['screen_rooms'] ?? ''),
                 'seating_capacity' => htmlspecialchars($_POST['seating_capacity'] ?? ''),
-                'facilities' => htmlspecialchars($_POST['facilities'] ?? ''),  
+                'facilities' => htmlspecialchars($_POST['facilities'] ?? ''),
 
                 // Operating Hours
                 'operating_hours' => $operatingHours,
@@ -184,6 +195,6 @@ class CinemaController
     public function success()
     {
         // Render the success page
-        require_once __DIR__ . '/../views/success.php';
+        require_once __DIR__ . '/../views/manager/success.php';
     }
 }

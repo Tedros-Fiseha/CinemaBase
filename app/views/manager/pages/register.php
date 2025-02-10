@@ -18,15 +18,33 @@
     </style>
 </head>
 
-<body>
-    <!-- Header -->
-    <?php require_once __DIR__ . '/includes/header.php'; ?>
+<body class="font-[poppins] bg-gray-100">
 
-    <div class="bg-gray-100 pt-32 flex items-center justify-center py-10 font-[poppins]">
-        <div class="bg-white rounded-lg shadow-lg w-full max-w-4xl p-8">
+
+    <main class="ml-[300px] p-10">
+        <!-- Header -->
+        <header class="bg-white shadow-md p-4 flex justify-center items-center fixed top-0 left-0 w-full z-50">
+            <div class="flex justify-between items-center w-full max-w-4xl px-4">
+                <span class="text-xl font-bold text-gray-700">
+                    <a href="/manager/home" class="hover:text-blue-500 transition">Manager Dashboard</a>
+                </span>
+                <div class="flex items-center space-x-4">
+                    <span class="font-semibold text-gray-700">
+                        <?= isset($_SESSION['email']) ? $_SESSION['email'] : 'Guest' ?>
+                    </span>
+                    <form action="/logout" method="GET">
+                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="bg-white rounded-lg shadow-lg w-full py-10 font-[poppins] max-w-4xl p-8 mt-20">
             <h1 class="text-2xl font-bold text-center text-indigo-600 mb-6">Cinema Registration Form</h1>
             <form action="/cinema/store" method="POST" enctype="multipart/form-data" class="space-y-6" id="multi-part-form">
-
                 <!-- Basic Information -->
                 <div class="form-section active " id="section-1">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Basic Information</h2>
@@ -38,7 +56,6 @@
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Cinema Name" required>
                         </div>
-
                         <!-- location -->
                         <div>
                             <label for="location" class="block text-sm font-medium mb-2">Location</label>
@@ -46,7 +63,6 @@
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Cinema Location" required>
                         </div>
-
                         <!-- Phone -->
                         <div>
                             <label for="cinema_phone" class="block text-sm font-medium mb-2">Phone</label>
@@ -54,7 +70,6 @@
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Phone Number" required>
                         </div>
-
                         <!-- Email -->
                         <div>
                             <label for="email" class="block text-sm font-medium mb-2">Email</label>
@@ -62,7 +77,6 @@
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="you@site.com" required>
                         </div>
-
                         <!-- Website -->
                         <div>
                             <label for="website" class="block text-sm font-medium mb-2">Website</label>
@@ -70,7 +84,6 @@
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="http://website.com" required>
                         </div>
-
                         <!-- Upload Logo -->
                         <div>
                             <h1 class="text-sm mb-2">Upload Logo</h1>
@@ -81,23 +94,18 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Operational Details -->
                 <div class="form-section" id="section-2">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Operational Details</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
                         <!-- Operating Hours -->
-
                         <div>
                             <label for="op_hours" class="block text-sm font-medium text-gray-700">Operating
                                 Hours</label>
                             <input type="number" id="op_hours" name="op_hours" placeholder="Enter operating hours"
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
-
                         <!-- Screens -->
-
                         <div>
                             <label for="screen_rooms" class="block text-sm font-medium text-gray-700">Number of
                                 Screens</label>
@@ -105,9 +113,7 @@
                                 placeholder="Enter number of screens"
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
-
                         <!-- Seating Capacity -->
-
                         <div>
                             <label for="seating_capacity" class="block text-sm font-medium text-gray-700">Seating
                                 Capacity</label>
@@ -115,24 +121,18 @@
                                 placeholder="Enter seating capacity"
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
-
                         <!-- Facilities -->
-
                         <div>
                             <label for="facilities" class="block text-sm font-medium text-gray-700">Facilities</label>
                             <textarea id="facilities" name="facilities" placeholder="List available facilities" rows="3"
                                 cols="30"
                                 class="resize-none py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
                         </div>
-
-
                         <!-- Operating Days -->
                         <div class="w-full">
                             <h1 class="text-sm font-medium text-gray-800 mb-4">Select Operating Days and Times</h1>
                             <ul class="w-max grid grid-cols-2 gap-5">
-
                                 <!-- Monday -->
-
                                 <li class="w-max flex flex-col items-start gap-4 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                     <div class="flex items-center gap-x-3">
                                         <input id="day-monday" name="operating-days[]" value="Monday" type="checkbox"
@@ -148,9 +148,7 @@
                                             class="py-2 px-3 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                 </li>
-
                                 <!-- Tuesday -->
-
                                 <li class="w-max flex flex-col items-start gap-4 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                     <div class="flex items-center gap-x-3">
                                         <input id="day-tuesday" name="operating-days[]" value="Tuesday" type="checkbox"
@@ -166,9 +164,7 @@
                                             class="py-2 px-3 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                 </li>
-
                                 <!-- Wednesday -->
-
                                 <li class="w-max flex flex-col items-start gap-4 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                     <div class="flex items-center gap-x-3">
                                         <input id="day-wednesday" name="operating-days[]" value="Wednesday" type="checkbox"
@@ -184,7 +180,6 @@
                                             class="py-2 px-3 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                 </li>
-
                                 <!-- Thursday -->
                                 <li class="w-max flex flex-col items-start gap-4 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                     <div class="flex items-center gap-x-3">
@@ -201,9 +196,7 @@
                                             class="py-2 px-3 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                 </li>
-
                                 <!-- Friday -->
-
                                 <li class="w-max flex flex-col items-start gap-4 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                     <div class="flex items-center gap-x-3">
                                         <input id="day-friday" name="operating-days[]" value="Friday" type="checkbox"
@@ -219,9 +212,7 @@
                                             class="py-2 px-3 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                 </li>
-
                                 <!-- Saturday -->
-
                                 <li class="w-max flex flex-col items-start gap-4 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                     <div class="flex items-center gap-x-3">
                                         <input id="day-saturday" name="operating-days[]" value="Saturday" type="checkbox"
@@ -237,9 +228,7 @@
                                             class="py-2 px-3 border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                 </li>
-
                                 <!-- Sunday -->
-
                                 <li class="w-max flex flex-col items-start gap-4 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                     <div class="flex items-center gap-x-3">
                                         <input id="day-sunday" name="operating-days[]" value="Sunday" type="checkbox"
@@ -258,13 +247,10 @@
                             </ul>
                         </div>
                     </div>
-
-
                     <!-- Languages -->
                     <div class="w-full mt-3">
                         <h1 class="text-sm font-medium text-gray-800 mb-4">Languages</h1>
                         <ul class="flex w-max gap-4">
-
                             <!-- English -->
                             <li
                                 class="flex w-max items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
@@ -272,7 +258,6 @@
                                     type="checkbox" class="h-3 w-3 border-gray-300 rounded focus:ring-blue-500">
                                 <label for="english_language" class="text-sm text-gray-700">English</label>
                             </li>
-
                             <!-- Amharic -->
                             <li
                                 class="flex w-max items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
@@ -280,7 +265,6 @@
                                     type="checkbox" class="h-3 w-3 border-gray-300 rounded focus:ring-blue-500">
                                 <label for="amharic_language" class="text-sm text-gray-700">Amharic</label>
                             </li>
-
                             <!-- Other -->
                             <li
                                 class="flex w-max items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
@@ -291,7 +275,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <!-- Financial Information -->
                 <div class="form-section" id="section-3">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Financial Information</h2>
@@ -301,9 +284,7 @@
                         <input type="text" id="tin_number" name="tin_number" placeholder="Enter TIN number"
                             class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
                             required>
-
                     </div>
-
                     <!-- Official Business License -->
                     <div class="mx-3 w-max">
                         <h1 class="text-sm my-2">Official Business License</h1>
@@ -312,12 +293,10 @@
                             class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4"
                             required>
                     </div>
-
                     <!-- Payment Options -->
                     <div class="mt-4">
                         <h1 class="text-sm my-2">Choose Payment Options</h1>
                         <ul class="flex flex-wrap space-x-6">
-
                             <!-- Mobile Banking -->
                             <li class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                 <div class="relative flex items-start w-full">
@@ -330,7 +309,6 @@
                                     </label>
                                 </div>
                             </li>
-
                             <!-- Online Payment -->
                             <li class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                 <div class="relative flex items-start w-full">
@@ -343,7 +321,6 @@
                                     </label>
                                 </div>
                             </li>
-
                             <!-- Cash -->
                             <li class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 rounded-lg">
                                 <div class="relative flex items-start w-full">
@@ -357,10 +334,8 @@
                                 </div>
                             </li>
                         </ul>
-
                     </div>
                 </div>
-
                 <!-- Admin Information -->
                 <div class="form-section" id="section-4">
                     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Admin Information</h2>
@@ -371,7 +346,6 @@
                             <input type="text" id="admin_name" name="admin_name" placeholder="Enter Admin's full name"
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
-
                         <!-- Admin Contact Number -->
                         <div class="flex-1">
                             <label for="admin_contact" class="block text-sm font-medium text-gray-700">Admin Contact
@@ -380,7 +354,6 @@
                                 placeholder="Enter Admin's contact number"
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
-
                         <!-- Admin Email -->
                         <div class="flex-1">
                             <label for="admin_email" class="block text-sm font-medium text-gray-700">Admin Email</label>
@@ -388,9 +361,7 @@
                                 placeholder="Enter Admin's email"
                                 class="py-3 border px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
-
                     </div>
-
                     <!-- File Uploads for Admin ID and Employment Document -->
                     <div class="flex items-center gap-6">
                         <!-- Admin ID Image Upload -->
@@ -400,7 +371,6 @@
                             <input type="file" id="admin_id_card" name="admin_id_card"
                                 class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4">
                         </div>
-
                         <!-- Admin Employment Document Upload -->
                         <div class="flex-1">
                             <label for="admin_employment_document" class="block text-sm font-medium text-gray-700">Admin
@@ -408,10 +378,8 @@
                             <input type="file" id="admin_employment_document" name="admin_employment_document"
                                 class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 file:bg-gray-50 file:border-0 file:me-4 file:py-3 file:px-4">
                         </div>
-
                     </div>
                 </div>
-
                 <!-- Navigation Buttons -->
                 <div class="flex justify-start space-x-4 mt-6">
                     <button type="button" id="prev-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300" disabled>Previous</button>
@@ -420,14 +388,13 @@
                 </div>
             </form>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <?php require_once __DIR__ . '/includes/footer.php'; ?>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const formSections = document.querySelectorAll('.form-section');
+            const formSections = document.querySelectorAll('.form-section'); // All form sections
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
             const submitBtn = document.getElementById('submit-btn');
@@ -437,10 +404,42 @@
                 formSections.forEach((section, i) => {
                     section.classList.toggle('active', i === index);
                 });
+
                 prevBtn.disabled = index === 0;
                 nextBtn.style.display = index === formSections.length - 1 ? 'none' : 'inline-block';
                 submitBtn.style.display = index === formSections.length - 1 ? 'inline-block' : 'none';
             }
+
+            function validateSection(sectionIndex) {
+                const inputs = formSections[sectionIndex].querySelectorAll('input, select, textarea');
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    if (input.hasAttribute('required') && input.value.trim() === '') {
+                        isValid = false;
+                        input.classList.add('border-red-500'); // Highlight error field
+                        input.nextElementSibling?.classList.add('text-red-500'); // Show error message
+                        input.nextElementSibling?.classList.remove('hidden');
+                    } else {
+                        input.classList.remove('border-red-500');
+                        input.nextElementSibling?.classList.remove('text-red-500');
+                        input.nextElementSibling?.classList.add('hidden');
+                    }
+                });
+
+                return isValid;
+            }
+
+            nextBtn.addEventListener('click', function() {
+                if (!validateSection(currentSection)) {
+                    alert('Please fill in all required fields before proceeding.');
+                    return;
+                }
+                if (currentSection < formSections.length - 1) {
+                    currentSection++;
+                    showSection(currentSection);
+                }
+            });
 
             prevBtn.addEventListener('click', function() {
                 if (currentSection > 0) {
@@ -449,16 +448,11 @@
                 }
             });
 
-            nextBtn.addEventListener('click', function() {
-                if (currentSection < formSections.length - 1) {
-                    currentSection++;
-                    showSection(currentSection);
-                }
-            });
-
             showSection(currentSection);
         });
     </script>
+
+
 </body>
 
 </html>
